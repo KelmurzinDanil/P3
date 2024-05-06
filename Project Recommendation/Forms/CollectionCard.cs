@@ -42,7 +42,7 @@ namespace design
             {
                 var imageList = new ImageList();
                 imageList.ImageSize = new Size(100, 100);
-                var listRealty = context.Compilations.Select(u => u.Realtys).SingleOrDefault();
+                var listRealty = context.Compilations.Select(u => u.Realtys).FirstOrDefault();
                 if (listRealty != null)
                 {
                     for (int i = 0; i < listRealty!.Count; i++)
