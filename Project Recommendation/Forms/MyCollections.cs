@@ -1,11 +1,15 @@
-﻿namespace design
+﻿using DB_993.Classes;
+
+namespace design
 {
     public partial class MyCollections : Form
     {
+        public Dictionary<int, string> Dict { get; set; } = new Dictionary<int, string>();
         public MyCollections()
         {
             InitializeComponent();
             Design();
+            LoadData();
         }
 
         /// <summary>
@@ -30,11 +34,25 @@
             MyListsButton.FlatAppearance.BorderSize = 0;
             MyListsButton.FlatStyle = FlatStyle.Flat;
         }
-
-        private void AddCollectionButton_Click(object sender, EventArgs e)
+        public void LoadData()
         {
-            CreateNewList createNewList = new CreateNewList();
-            createNewList.ShowDialog();
+
+            using (var context = new ApplicationContextBD())
+            {
+
+                var listComp = context.Compilations.ToList();
+                for (int i = 0; i < listComp.Count; i++)
+                {
+                    var listViewComp = new ListViewItem(new string[] { listComp[i]!.Name!.ToString()! });
+                    Dict.Add(listComp[i].Id, listComp[i].Name!);
+                    CompList.Items.Add(listViewComp);
+                }
+            }
+        }
+        private void CompList_ItemActivate(object sender, EventArgs e)
+        {
+            var cCard = new CollectionCard();
+            cCard.Show();
         }
     }
 }

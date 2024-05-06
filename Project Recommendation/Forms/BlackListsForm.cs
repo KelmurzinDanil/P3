@@ -33,7 +33,7 @@ namespace design
             BlackListButton.FlatAppearance.BorderSize = 0;
             BlackListButton.FlatStyle = FlatStyle.Flat;
         }
-        private void FillTableFavourites()
+        public void FillTableFavourites()
         {
             using (var context = new ApplicationContextBD())
             {
@@ -54,7 +54,7 @@ namespace design
                 context.SaveChanges();
             }
         }
-        private void LoadData()
+        public void LoadData()
         {
             using (var context = new ApplicationContextBD())
             {

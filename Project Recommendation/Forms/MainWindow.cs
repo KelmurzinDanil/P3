@@ -382,5 +382,10 @@ namespace design
             addList.ShowDialog();
         }
 
+        private void CompilationBtn_Click(object sender, EventArgs e)
+        {
+            var compList = new MyCollections();
+            compList.Show();
+        }
     }
 }

@@ -53,14 +53,17 @@ namespace design
 
         private void AddCollectionBtn_Click(object sender, EventArgs e)
         {
-            if (CollectionsCombo.Text == String.Empty)
+            if (CollectionsCombo.Text != String.Empty)
             {
                 using (var context = new ApplicationContextBD())
                 {
-                    var realty = new Realty
+                    var realty = context.Realtys.FirstOrDefault( i => i.Id == IdRealty );
+                    if (realty != null)
                     {
-                        //CompilationId = 
-                    };
+                        realty!.CompilationId = Dict.Keys.First(f => Dict[f] == CollectionsCombo.Text);
+                        context.SaveChanges();
+                    }
+
                 }
             }
         }

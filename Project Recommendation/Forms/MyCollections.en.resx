@@ -19790,7 +19790,23 @@
         QkeQVkF8djGmy+ZU1zHGp1loKUK/GcdoUQCxaH8aU6NtyP8BETIbVPdYIKQAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="AddCollectionButton.Text" xml:space="preserve">
-    <value>ADD</value>
+  <data name="PhotoFirst.Text" xml:space="preserve">
+    <value>Фото</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="PhotoFirst.Width" type="System.Int32, mscorlib">
+    <value>150</value>
+  </data>
+  <data name="NameList.Text" xml:space="preserve">
+    <value>Название подборок</value>
+  </data>
+  <data name="NameList.Width" type="System.Int32, mscorlib">
+    <value>550</value>
+  </data>
+  <data name="CompList.Location" type="System.Drawing.Point, System.Drawing">
+    <value>31, 125</value>
+  </data>
+  <data name="CompList.Size" type="System.Drawing.Size, System.Drawing">
+    <value>732, 709</value>
   </data>
 </root>

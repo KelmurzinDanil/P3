@@ -1,4 +1,6 @@
-﻿namespace design
+﻿using DB_993.Classes;
+
+namespace design
 {
     /// <summary>
     /// Класс используется для отображения и взаимодействия с коллекцией карточек.
@@ -9,6 +11,7 @@
         {
             InitializeComponent();
             Design();
+            LoadData();
         }
 
         /// <summary>
@@ -16,8 +19,6 @@
         /// </summary>
         public void Design()
         {
-            Name.Parent = Picture7;
-            Name.BackColor = Color.Transparent;
             ProfileButton.Parent = Picture7;
             ProfileButton.BackColor = Color.Transparent;
             ProfileButton.FlatAppearance.BorderSize = 0;
@@ -35,10 +36,32 @@
             MyListsButton.FlatAppearance.BorderSize = 0;
             MyListsButton.FlatStyle = FlatStyle.Flat;
         }
-
-        private void EditButton_Click(object sender, EventArgs e)
+        public void LoadData()
         {
-            SaveButton.Show();
+            using (var context = new ApplicationContextBD())
+            {
+                var imageList = new ImageList();
+                imageList.ImageSize = new Size(100, 100);
+                var listRealty = context.Compilations.Select(u => u.Realtys).SingleOrDefault();
+                if (listRealty != null)
+                {
+                    for (int i = 0; i < listRealty!.Count; i++)
+                    {
+                        imageList.Images.Add(new Bitmap(listRealty[i].PhotoRealty!));
+                    }
+                    ListRealtyComp.SmallImageList = imageList;
+
+                    for (int i = 0; i < listRealty.Count; i++)
+                    {
+                        var listViewItem = new ListViewItem(new string[] { string.Empty, listRealty[i].Price.ToString()!,
+                        listRealty[i].Address!, listRealty[i].NameRealty!});
+                        listViewItem.ImageIndex = i;
+                        ListRealtyComp.Items.Add(listViewItem);
+                    }
+                }
+
+            }
         }
+
     }
 }

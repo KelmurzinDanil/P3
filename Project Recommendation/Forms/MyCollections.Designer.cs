@@ -34,7 +34,9 @@
             FavButton = new Button();
             ProfileButton = new Button();
             Picture7 = new PictureBox();
-            AddCollectionButton = new Button();
+            CompList = new ListView();
+            PhotoFirst = new ColumnHeader();
+            NameList = new ColumnHeader();
             ((System.ComponentModel.ISupportInitialize)Picture7).BeginInit();
             SuspendLayout();
             // 
@@ -68,20 +70,29 @@
             Picture7.Name = "Picture7";
             Picture7.TabStop = false;
             // 
-            // AddCollectionButton
+            // CompList
             // 
-            resources.ApplyResources(AddCollectionButton, "AddCollectionButton");
-            AddCollectionButton.BackColor = Color.FloralWhite;
-            AddCollectionButton.ForeColor = Color.DimGray;
-            AddCollectionButton.Name = "AddCollectionButton";
-            AddCollectionButton.UseVisualStyleBackColor = false;
-            AddCollectionButton.Click += AddCollectionButton_Click;
+            resources.ApplyResources(CompList, "CompList");
+            CompList.Columns.AddRange(new ColumnHeader[] { PhotoFirst, NameList });
+            CompList.MultiSelect = false;
+            CompList.Name = "CompList";
+            CompList.UseCompatibleStateImageBehavior = false;
+            CompList.View = View.Details;
+            CompList.ItemActivate += CompList_ItemActivate;
+            // 
+            // PhotoFirst
+            // 
+            resources.ApplyResources(PhotoFirst, "PhotoFirst");
+            // 
+            // NameList
+            // 
+            resources.ApplyResources(NameList, "NameList");
             // 
             // MyCollections
             // 
             resources.ApplyResources(this, "$this");
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(AddCollectionButton);
+            Controls.Add(CompList);
             Controls.Add(MyListsButton);
             Controls.Add(BlackListButton);
             Controls.Add(FavButton);
@@ -100,6 +111,8 @@
         private System.Windows.Forms.Button FavButton;
         private System.Windows.Forms.Button ProfileButton;
         private System.Windows.Forms.PictureBox Picture7;
-        private System.Windows.Forms.Button AddCollectionButton;
+        private ListView CompList;
+        private ColumnHeader NameList;
+        private ColumnHeader PhotoFirst;
     }
 }

@@ -50,6 +50,7 @@
             AddBlackListButton = new Button();
             FloorText = new Label();
             button1 = new Button();
+            CompilationBtn = new Button();
             ((System.ComponentModel.ISupportInitialize)Picture3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)RealtyPhoto).BeginInit();
             SuspendLayout();
@@ -201,10 +202,18 @@
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
+            // CompilationBtn
+            // 
+            resources.ApplyResources(CompilationBtn, "CompilationBtn");
+            CompilationBtn.Name = "CompilationBtn";
+            CompilationBtn.UseVisualStyleBackColor = true;
+            CompilationBtn.Click += CompilationBtn_Click;
+            // 
             // MainWindow
             // 
             resources.ApplyResources(this, "$this");
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(CompilationBtn);
             Controls.Add(button1);
             Controls.Add(FloorText);
             Controls.Add(AddBlackListButton);
@@ -257,5 +266,6 @@
         private System.Windows.Forms.Button AddBlackListButton;
         private Label FloorText;
         private Button button1;
+        private Button CompilationBtn;
     }
 }

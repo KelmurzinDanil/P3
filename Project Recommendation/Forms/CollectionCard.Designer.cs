@@ -34,10 +34,11 @@
             FavButton = new Button();
             ProfileButton = new Button();
             Picture7 = new PictureBox();
-            EditButton = new Button();
-            SaveButton = new Button();
-            Name = new Label();
-            NameText = new TextBox();
+            ListRealtyComp = new ListView();
+            PhotoList = new ColumnHeader();
+            PriceList = new ColumnHeader();
+            AddressList = new ColumnHeader();
+            NameList = new ColumnHeader();
             ((System.ComponentModel.ISupportInitialize)Picture7).BeginInit();
             SuspendLayout();
             // 
@@ -71,56 +72,45 @@
             Picture7.Name = "Picture7";
             Picture7.TabStop = false;
             // 
-            // EditButton
+            // ListRealtyComp
             // 
-            resources.ApplyResources(EditButton, "EditButton");
-            EditButton.BackColor = Color.FloralWhite;
-            EditButton.ForeColor = Color.DimGray;
-            EditButton.Name = "EditButton";
-            EditButton.UseVisualStyleBackColor = false;
-            EditButton.Click += EditButton_Click;
+            resources.ApplyResources(ListRealtyComp, "ListRealtyComp");
+            ListRealtyComp.Columns.AddRange(new ColumnHeader[] { PhotoList, PriceList, AddressList, NameList });
+            ListRealtyComp.MultiSelect = false;
+            ListRealtyComp.Name = "ListRealtyComp";
+            ListRealtyComp.UseCompatibleStateImageBehavior = false;
+            ListRealtyComp.View = View.Details;
             // 
-            // SaveButton
+            // PhotoList
             // 
-            resources.ApplyResources(SaveButton, "SaveButton");
-            SaveButton.BackColor = Color.FloralWhite;
-            SaveButton.ForeColor = Color.DimGray;
-            SaveButton.Name = "SaveButton";
-            SaveButton.UseVisualStyleBackColor = false;
+            resources.ApplyResources(PhotoList, "PhotoList");
             // 
-            // Name
+            // PriceList
             // 
-            resources.ApplyResources(Name, "Name");
-            Name.BackColor = Color.Transparent;
-            Name.ForeColor = SystemColors.ButtonHighlight;
-            Name.Name = "Name";
+            resources.ApplyResources(PriceList, "PriceList");
             // 
-            // NameText
+            // AddressList
             // 
-            resources.ApplyResources(NameText, "NameText");
-            NameText.BackColor = Color.FloralWhite;
-            NameText.BorderStyle = BorderStyle.None;
-            NameText.ForeColor = Color.DimGray;
-            NameText.Name = "NameText";
+            resources.ApplyResources(AddressList, "AddressList");
+            // 
+            // NameList
+            // 
+            resources.ApplyResources(NameList, "NameList");
             // 
             // CollectionCard
             // 
             resources.ApplyResources(this, "$this");
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(NameText);
-            Controls.Add(Name);
-            Controls.Add(SaveButton);
-            Controls.Add(EditButton);
+            Controls.Add(ListRealtyComp);
             Controls.Add(MyListsButton);
             Controls.Add(BlackListButton);
             Controls.Add(FavButton);
             Controls.Add(ProfileButton);
             Controls.Add(Picture7);
             FormBorderStyle = FormBorderStyle.SizableToolWindow;
-            NameText.Name = "CollectionCard";
+            Name = "CollectionCard";
             ((System.ComponentModel.ISupportInitialize)Picture7).EndInit();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -130,9 +120,10 @@
         private System.Windows.Forms.Button FavButton;
         private System.Windows.Forms.Button ProfileButton;
         private System.Windows.Forms.PictureBox Picture7;
-        private System.Windows.Forms.Button EditButton;
-        private System.Windows.Forms.Button SaveButton;
-        new private System.Windows.Forms.Label Name;
-        private System.Windows.Forms.TextBox NameText;
+        private ListView ListRealtyComp;
+        private ColumnHeader PhotoList;
+        private ColumnHeader PriceList;
+        private ColumnHeader AddressList;
+        private ColumnHeader NameList;
     }
 }
