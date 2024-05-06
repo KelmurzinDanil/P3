@@ -28,7 +28,7 @@ namespace design
             using (var context = new ApplicationContextBD())
             {
                 var comp = context.Compilations.FirstOrDefault(d => d.Name == CollectionNameText.Text);
-                if (comp == null)
+                if (comp != null)
                 {
                     MessageBox.Show("Такое название уже существует");
                     return;
