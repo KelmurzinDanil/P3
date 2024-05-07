@@ -1,4 +1,5 @@
 ﻿using DB_993.Classes;
+using System.Collections.Generic;
 
 namespace design
 {
@@ -51,8 +52,13 @@ namespace design
         }
         private void CompList_ItemActivate(object sender, EventArgs e)
         {
-            var cCard = new CollectionCard();
-            cCard.Show();
+            ListView.SelectedIndexCollection indices = CompList.SelectedIndices;
+            if (indices.Count > 0)
+            {
+                var cCard = new CollectionCard(indices[0] + 1);
+                cCard.Show();
+            }
+            
         }
     }
 }

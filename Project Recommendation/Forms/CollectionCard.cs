@@ -7,10 +7,12 @@ namespace design
     /// </summary>
     public partial class CollectionCard : Form
     {
-        public CollectionCard()
+        public int IdComp { get; set; }
+        public CollectionCard(int idComp)
         {
             InitializeComponent();
             Design();
+            IdComp = idComp;
             LoadData();
         }
 
@@ -42,7 +44,7 @@ namespace design
             {
                 var imageList = new ImageList();
                 imageList.ImageSize = new Size(100, 100);
-                var listRealty = context.Compilations.Select(u => u.Realtys).FirstOrDefault();
+                var listRealty = context.Compilations.Where(w => w.Id == IdComp).Select(u => u.Realtys).FirstOrDefault();
                 if (listRealty != null)
                 {
                     for (int i = 0; i < listRealty!.Count; i++)
