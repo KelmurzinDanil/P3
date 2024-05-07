@@ -1,5 +1,6 @@
 ﻿using DB_993.Classes;
 using DB_993.Resourse;
+using System.Text.RegularExpressions;
 
 namespace design
 {
@@ -94,18 +95,34 @@ namespace design
                     return;
                 }
                 var user = context.Users.FirstOrDefault(user => user.Email == Email_);
-                if (user != null)
+                if (CheckLogin(EmailText.Text))
                 {
-                    user.Name = NameText.Text;
-                    user.Email = EmailText.Text;
-                    context.SaveChanges();
-                    MessageBox.Show(ProfileLocal.DataTextProfile);
+                    if (user != null)
+                    {
+                        user.Name = NameText.Text;
+                        user.Email = EmailText.Text;
+                        context.SaveChanges();
+                        MessageBox.Show(ProfileLocal.DataTextProfile);
+                    }
+                    else
+                    {
+                        MessageBox.Show(ProfileLocal.UserTextProfile);
+                    }
                 }
                 else
                 {
-                    MessageBox.Show(ProfileLocal.UserTextProfile);
+                    MessageBox.Show("Неправильный формат почты");
                 }
+                
             }
+        }
+        public bool CheckLogin(string email)
+        {
+            string pattern = @"^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$";
+
+            Regex regex = new Regex(pattern);
+
+            return regex.IsMatch(email);
         }
     }
 }

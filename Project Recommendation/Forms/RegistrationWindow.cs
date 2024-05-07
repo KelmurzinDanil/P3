@@ -1,5 +1,8 @@
 ﻿using DB_993.Classes;
 using DB_993.Resourse;
+using System.Security.Cryptography.X509Certificates;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
+using System.Text.RegularExpressions;
 
 namespace design
 {
@@ -60,22 +63,37 @@ namespace design
                     MessageBox.Show(RegistrationWindowLocal.EmailTextReg);
                     return;
                 }
-                HashPassword heshPassword = new HashPassword();
-                var newUser = new User
+                if (CheckLogin(LoginRegText.Text))
                 {
-                    Name = NameRegText.Text,
-                    Email = LoginRegText.Text,
-                    Password = heshPassword.GetPassword(PasswordRegText.Text)
-                };
+                    HashPassword heshPassword = new HashPassword();
+                    var newUser = new User
+                    {
+                        Name = NameRegText.Text,
+                        Email = LoginRegText.Text,
+                        Password = heshPassword.GetPassword(PasswordRegText.Text)
+                    };
 
-                context.Users.Add(newUser);
-                context.SaveChanges();
+                    context.Users.Add(newUser);
+                    context.SaveChanges();
 
-                MessageBox.Show(RegistrationWindowLocal.RegText);
-                MainWindow mainWindow = new MainWindow(LoginRegText.Text);
-                mainWindow.ShowDialog();
-
+                    MessageBox.Show(RegistrationWindowLocal.RegText);
+                    MainWindow mainWindow = new MainWindow(LoginRegText.Text);
+                    mainWindow.ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show("Неправильный формат почты");
+                }
             }
+           
+        }
+        public bool CheckLogin(string email)
+        {
+            string pattern = @"^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$";
+
+            Regex regex = new Regex(pattern);
+
+            return regex.IsMatch(email);
         }
     }
 }
