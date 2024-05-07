@@ -6,10 +6,12 @@ namespace design
     /// </summary>
     public partial class CreateNewList : Form
     {
-        public CreateNewList()
+        string Email {  get; set; }
+        public CreateNewList(string email)
         {
             InitializeComponent();
             Design();
+            Email = email;
         }
 
         /// <summary>
@@ -35,7 +37,8 @@ namespace design
                 }
                 var newCompilation = new Compilation
                 {
-                    Name = CollectionNameText.Text
+                    Name = CollectionNameText.Text,
+                    UserId = context.Users.FirstOrDefault(f => f.Email == Email)!.Id
                 };
                 context.Compilations.Add(newCompilation);
                 context.SaveChanges();

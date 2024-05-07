@@ -39,6 +39,7 @@
             PriceList = new ColumnHeader();
             AddressList = new ColumnHeader();
             NameList = new ColumnHeader();
+            GoInEmailBtn = new Button();
             ((System.ComponentModel.ISupportInitialize)Picture7).BeginInit();
             SuspendLayout();
             // 
@@ -97,10 +98,18 @@
             // 
             resources.ApplyResources(NameList, "NameList");
             // 
+            // GoInEmailBtn
+            // 
+            resources.ApplyResources(GoInEmailBtn, "GoInEmailBtn");
+            GoInEmailBtn.Name = "GoInEmailBtn";
+            GoInEmailBtn.UseVisualStyleBackColor = true;
+            GoInEmailBtn.Click += GoInEmailBtn_Click;
+            // 
             // CollectionCard
             // 
             resources.ApplyResources(this, "$this");
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(GoInEmailBtn);
             Controls.Add(ListRealtyComp);
             Controls.Add(MyListsButton);
             Controls.Add(BlackListButton);
@@ -125,5 +134,6 @@
         private ColumnHeader PriceList;
         private ColumnHeader AddressList;
         private ColumnHeader NameList;
+        private Button GoInEmailBtn;
     }
 }

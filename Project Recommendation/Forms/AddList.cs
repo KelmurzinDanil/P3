@@ -7,6 +7,7 @@ namespace design
     /// </summary>
     public partial class AddList : Form
     {
+        public string Email {  get; set; }
         public Dictionary<int, string> Dict { get; set; } = new();
         public int IdRealty { get; set; }
         public AddList()
@@ -15,16 +16,18 @@ namespace design
             Design();
             FillComboBox();
         }
-        public AddList(int idRealty)
+        public AddList(int idRealty, string email)
         {
             InitializeComponent();
             Design();
-            FillComboBox();
             IdRealty = idRealty;
+            Email = email;
+            FillComboBox();
+            
         }
         private void CreateCollectionButton_Click(object sender, EventArgs e)
         {
-            CreateNewList createNewList = new CreateNewList();
+            CreateNewList createNewList = new CreateNewList(Email);
             createNewList.ShowDialog();
         }
 
@@ -42,7 +45,7 @@ namespace design
         {
             using (var context = new ApplicationContextBD())
             {
-                var compilation = context.Compilations.ToList();
+                var compilation = context.Compilations.Where(w => w.UserId == context.Users.FirstOrDefault(w => w.Email == Email)!.Id).ToList();
                 foreach (var comp in compilation)
                 {
                     CollectionsCombo.Items.Add(comp.Name!).ToString();

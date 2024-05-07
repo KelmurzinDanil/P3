@@ -19790,19 +19790,10 @@
         QkeQVkF8djGmy+ZU1zHGp1loKUK/GcdoUQCxaH8aU6NtyP8BETIbVPdYIKQAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="ListRealtyComp.Location" type="System.Drawing.Point, System.Drawing">
-    <value>34, 119</value>
-  </data>
-  <data name="ListRealtyComp.Size" type="System.Drawing.Size, System.Drawing">
-    <value>729, 678</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="ListRealtyComp.TabIndex" type="System.Int32, mscorlib">
-    <value>23</value>
-  </data>
   <data name="PhotoList.Text" xml:space="preserve">
     <value>Изображение</value>
   </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="PhotoList.Width" type="System.Int32, mscorlib">
     <value>120</value>
   </data>
@@ -19823,5 +19814,20 @@
   </data>
   <data name="NameList.Width" type="System.Int32, mscorlib">
     <value>120</value>
+  </data>
+  <data name="ListRealtyComp.Size" type="System.Drawing.Size, System.Drawing">
+    <value>729, 678</value>
+  </data>
+  <data name="GoInEmailBtn.Location" type="System.Drawing.Point, System.Drawing">
+    <value>669, 803</value>
+  </data>
+  <data name="GoInEmailBtn.Size" type="System.Drawing.Size, System.Drawing">
+    <value>94, 29</value>
+  </data>
+  <data name="GoInEmailBtn.TabIndex" type="System.Int32, mscorlib">
+    <value>24</value>
+  </data>
+  <data name="GoInEmailBtn.Text" xml:space="preserve">
+    <value>button1</value>
   </data>
 </root>

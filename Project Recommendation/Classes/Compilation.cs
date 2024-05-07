@@ -8,5 +8,7 @@
         public int Id { get; set; }
         public string? Name { get; set; }
         public List<Realty> Realtys { get; set; } = new();
+        public int? UserId { get; set; }
+        public User User { get; set; }
     }
 }

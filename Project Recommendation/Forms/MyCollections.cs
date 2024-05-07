@@ -5,11 +5,13 @@ namespace design
 {
     public partial class MyCollections : Form
     {
+        public string Email { get; set; }
         public Dictionary<int, string> Dict { get; set; } = new Dictionary<int, string>();
-        public MyCollections()
+        public MyCollections(string email)
         {
             InitializeComponent();
             Design();
+            Email = email;
             LoadData();
         }
 
@@ -55,7 +57,7 @@ namespace design
             ListView.SelectedIndexCollection indices = CompList.SelectedIndices;
             if (indices.Count > 0)
             {
-                var cCard = new CollectionCard(indices[0] + 1);
+                var cCard = new CollectionCard(indices[0] + 1, Email);
                 cCard.Show();
             }
             

@@ -378,13 +378,13 @@ namespace design
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var addList = new AddList(IdRealryForFavBlMark);
+            var addList = new AddList(IdRealryForFavBlMark, Email);
             addList.ShowDialog();
         }
 
         private void CompilationBtn_Click(object sender, EventArgs e)
         {
-            var compList = new MyCollections();
+            var compList = new MyCollections(Email!);
             compList.Show();
         }
     }
