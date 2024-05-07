@@ -11,6 +11,7 @@ namespace design
     public partial class CollectionCard : Form
     {
         //cQ8-jbJ-Tin-9tA
+        //SS9rxQxQp63Yhi1jgXvx
         public string Email {  get; set; }
         public int IdComp { get; set; }
         public CollectionCard(int idComp, string email)
@@ -76,62 +77,26 @@ namespace design
         {
             using (var context = new ApplicationContextBD()) 
             {
-                //// отправитель - устанавливаем адрес и отображаемое в письме имя
-                //MailAddress from = new MailAddress("danil.kelmurzin@mail.ru", "ООО ДДД");
-                //// кому отправляем
-                //MailAddress to = new MailAddress(Email);
-                //// создаем объект сообщения
-                //MailMessage m = new MailMessage(from, to);
-                //// тема письма
-                //m.Subject = "Подборка";
-                //// текст письма
-                //m.Body = "<h2>----</h2>";
-                //// письмо представляет код html
-                //m.IsBodyHtml = true;
-                //// адрес smtp-сервера и порт, с которого будем отправлять письмо
-                //SmtpClient smtp = new SmtpClient("smtp.mail.ru", 465);
-                //// логин и пароль
-                //smtp.Credentials = new NetworkCredential(Email, "password");
-                //smtp.EnableSsl = true;
-                //smtp.Send(m);
-                try
+                var realty = context.Compilations.Where(w => w.Id == IdComp).Select(u => u.Realtys).FirstOrDefault();
+                string textComp = String.Empty;
+                string messegeText = String.Empty;
+                for (int i = 0; i < realty?.Count; i++)
                 {
-
-                    SmtpClient mySmtpClient = new SmtpClient("smtp.mail.ru", 465);
-                    mySmtpClient.UseDefaultCredentials = false;
-                    System.Net.NetworkCredential basicAuthenticationInfo = new
-                       System.Net.NetworkCredential("testikovich77@mail.ru", "cQ8-jbJ-Tin-9tA");
-                    mySmtpClient.Credentials = basicAuthenticationInfo;
-                    MailAddress from = new MailAddress(Email, "TestFromName");
-                    MailAddress to = new MailAddress(Email, "TestToName");
-                    MailMessage myMail = new System.Net.Mail.MailMessage(from, to);
-
-                    // add ReplyTo
-                    MailAddress replyTo = new MailAddress(Email);
-                    myMail.ReplyToList.Add(replyTo);
-
-                    // set subject and encoding
-                    myMail.Subject = "Test message";
-                    myMail.SubjectEncoding = System.Text.Encoding.UTF8;
-
-                    // set body-message and encoding
-                    myMail.Body = "<b>Test Mail</b><br>using <b>HTML</b>.";
-                    myMail.BodyEncoding = System.Text.Encoding.UTF8;
-                    // text or html
-                    myMail.IsBodyHtml = true;
-
-                    mySmtpClient.Send(myMail);
+                    textComp = $"Название - {realty[i].NameRealty},\n Цена - {realty[i].Price},\n Адрес - {realty[i].Address},\n Площадь - {realty[i].Square},\n" +
+                        $"Этажи - {realty[i].Floor},\n Комнаты - {realty[i].Rooms},\n Город - {realty[i].City}" +
+                        $",\nТип - {realty[i].Type},\n Для чего - {realty[i].ForWhat}";
+                    messegeText = string.Concat(messegeText, textComp);
                 }
-
-                catch (SmtpException ex)
-                {
-                    throw new ApplicationException
-                      ("SmtpException has occured: " + ex.Message);
-                }
-                catch (Exception ex)
-                {
-                    throw ex;
-                }
+                MailAddress from = new MailAddress("testikovich77@mail.ru", "ООО ДДД");
+                MailAddress to = new MailAddress(Email);
+                MailMessage m = new MailMessage(from, to);
+                m.Subject = "Подборка";
+                m.Body =  $"<h2>{messegeText}</h2>";
+                m.IsBodyHtml = true;
+                SmtpClient smtp = new SmtpClient("smtp.mail.ru", 587);
+                smtp.Credentials = new NetworkCredential("testikovich77@mail.ru", "SS9rxQxQp63Yhi1jgXvx");
+                smtp.EnableSsl = true;
+                smtp.Send(m);               
             }
             
         }
