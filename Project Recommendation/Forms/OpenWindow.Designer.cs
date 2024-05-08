@@ -37,6 +37,7 @@
             label1 = new Label();
             label2 = new Label();
             LanguageComboBox = new ComboBox();
+            button1 = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -107,10 +108,20 @@
             LanguageComboBox.Name = "LanguageComboBox";
             LanguageComboBox.SelectedIndexChanged += LanguageComboBox_SelectedIndexChanged;
             // 
+            // button1
+            // 
+            resources.ApplyResources(button1, "button1");
+            button1.BackColor = Color.FloralWhite;
+            button1.ForeColor = Color.DimGray;
+            button1.Name = "button1";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
+            // 
             // OpenWindow
             // 
             resources.ApplyResources(this, "$this");
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(button1);
             Controls.Add(LanguageComboBox);
             Controls.Add(label2);
             Controls.Add(label1);
@@ -136,6 +147,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private ComboBox LanguageComboBox;
+        private Button button1;
     }
 }
 

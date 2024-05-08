@@ -1,4 +1,5 @@
 ﻿using DB_993.Classes;
+using DB_993.Forms;
 using DB_993.Resourse;
 
 namespace design
@@ -118,10 +119,19 @@ namespace design
                 Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en");
 
             }
-
             Controls.Clear();
             InitializeComponent();
             Design();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var vkApi = new WebAuto();
+            if (vkApi.Authorize())
+            {
+                var mWin = new MainWindow();
+                mWin.Show();
+            }
         }
     }
 }
